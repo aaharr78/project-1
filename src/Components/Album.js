@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DeleteButton from './DeleteButton';
 import axios from 'axios';
 import ArtistName from './ArtistName'
-
+import ArtistDetails from './ArtistDetails'
 
 class Album extends Component {
 
@@ -16,8 +16,8 @@ class Album extends Component {
         return(
             <div>
                 <ArtistName patchAlbum ={this.props.patchAlbum} album={s}/>
-                <p>{s.title}</p>
-                <p>{s.decade}</p>
+                <ArtistDetails label="Title" value={s.title}/>
+                <ArtistDetails label="Decade" value={s.decade}/>
                 <DeleteButton id={s.id} deleteAlbum={this.deleteAlbum}/>
             </div>
         )
