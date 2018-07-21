@@ -8,9 +8,21 @@ class Create extends Component {
 
             name: '',
             title: '',
-            decade: ''
+            decade: '',
+            addUpdatedText: "Add new artist"
         }
     }
+    componentDidMount(){
+        this.props.onRef(this)
+    }
+    componentWillMount(){
+        this.props.onRef(null)
+    }
+    setAlbum = album => {
+        this.setState(album)
+        this.setState({addUpdatedText: "Update Artist"})
+    }
+
 
     handleName = (e)=> {
         this.setState({name: e.target.value})
@@ -23,20 +35,34 @@ class Create extends Component {
     }
 
     addAlbum = () => {
-        const {name , title, decade} = this.state
+        const {name , title, decade, id } = this.state
         const newAlbum = {name, title, decade}
-        axios.post('/api/album', newAlbum).then(results => {
-            this.props.updateAlbum(results.data)
+        if (id === undefined ){
+            axios.post('/api/album', newAlbum).then(results => {
+                this.props.updateAlbum(results.data)      
+            })  
+        }else{
+            axios.put(`/api/album/${id}`, newAlbum).then(results => {
+                this.props.updateAlbum(results.data)
         })
+    }
+    this.setState({
+
+        name: '',
+        title: '',
+        decade: '',
+        addUpdatedText: 'Add new artist'
+    })
+        
     }
 
     render(){
         return(
             <div>
                 <input type="text" placeholder='Artist Name' value={this.state.name} onChange={this.handleName}/>
-                <input type="text" placeholder='Album Title' value={this.state.Title} onChange={this.handleTitle}/>
+                <input type="text" placeholder='Album Title' value={this.state.title} onChange={this.handleTitle}/>
                 <input type="number" placeholder='Decade' value={this.state.decade} onChange={this.handleDecade}/>
-                <button onClick={this.addAlbum}>Add New Artist</button>
+                <button onClick={this.addAlbum}>{this.state.addUpdatedText}</button>
             </div>
         )
     }

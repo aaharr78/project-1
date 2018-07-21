@@ -22,13 +22,18 @@ class App extends Component {
     this.setState({album})
   }
 
+  patchAlbum = (album) => {
+    this.createComponent.setAlbum(album)
+
+  }
+
   render() {
     let albumMap = this.state.album.map(s => {
-      return <Album key={s.id} updateAlbum={this.updateAlbum} s={s} />
+      return <Album key={s.id} patchAlbum={this.patchAlbum} updateAlbum={this.updateAlbum} s={s} />
     })
     return (
       <div className="App">
-        <Create updateAlbum={this.updateAlbum}/>
+        <Create updateAlbum={this.updateAlbum} onRef={ref => (this.createComponent = ref)}/>
         {albumMap}
       </div>
     );
