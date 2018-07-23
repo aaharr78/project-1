@@ -17,7 +17,7 @@ class Album extends Component {
             <div>
                 <ArtistName patchAlbum ={this.props.patchAlbum} album={s}/>
                 <ArtistDetails label="Title" value={s.title}/>
-                <ArtistDetails label="Decade" value={s.decade}/>
+                <ArtistDetails label="Price $$$" value={s.decade}/>
                 <DeleteButton id={s.id} deleteAlbum={this.deleteAlbum}/>
             </div>
         )

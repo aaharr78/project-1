@@ -3,7 +3,7 @@ let album = [
         id: 1,
         name: 'Nirvana',
         title: 'Nevermind',
-        decade: 90
+        decade: 19.99
     }
 ]
 

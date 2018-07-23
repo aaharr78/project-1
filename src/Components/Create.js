@@ -9,7 +9,7 @@ class Create extends Component {
             name: '',
             title: '',
             decade: '',
-            addUpdatedText: "Add new artist"
+            addUpdatedText: "Add new Album"
         }
     }
     componentDidMount(){
@@ -20,7 +20,7 @@ class Create extends Component {
     }
     setAlbum = album => {
         this.setState(album)
-        this.setState({addUpdatedText: "Update Artist"})
+        this.setState({addUpdatedText: "Update Album info"})
     }
 
 
@@ -51,7 +51,7 @@ class Create extends Component {
         name: '',
         title: '',
         decade: '',
-        addUpdatedText: 'Add new artist'
+        addUpdatedText: 'Add new Album'
     })
         
     }
@@ -59,10 +59,10 @@ class Create extends Component {
     render(){
         return(
             <div>
-                <input type="text" placeholder='Artist Name' value={this.state.name} onChange={this.handleName}/>
-                <input type="text" placeholder='Album Title' value={this.state.title} onChange={this.handleTitle}/>
-                <input type="number" placeholder='Decade' value={this.state.decade} onChange={this.handleDecade}/>
-                <button onClick={this.addAlbum}>{this.state.addUpdatedText}</button>
+                <input className="AddNewArtist" type="text" placeholder='Artist Name' value={this.state.name} onChange={this.handleName}/>
+                <input className="AddNewArtist" type="text" placeholder='Album Title' value={this.state.title} onChange={this.handleTitle}/>
+                <input className="AddNewArtist" type="number" placeholder='Price' value={this.state.decade} onChange={this.handleDecade}/>
+                <button className="AddNewAlbum" onClick={this.addAlbum}>{this.state.addUpdatedText}</button>
             </div>
         )
     }

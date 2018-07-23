@@ -2,7 +2,7 @@ import React from 'react'
 
 function ArtistDetails(props){
     return (
-        <p class= "artistDetails">{props.label}: {props.value}</p>
+        <h3 className= "artistDetails">{props.label}: {props.value}</h3>
         )
 }
 export default ArtistDetails
